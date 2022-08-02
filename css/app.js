@@ -70,11 +70,47 @@ const cart = document.querySelector(".cart")
 
 
 cart.addEventListener("click", () => {
-    if(cover.style.display === "none") {
-        cover.style.display = "flex";
+    cover.classList.toggle("basket")
+});
+
+// Delete Cart Item
+const hide = document.querySelector(".hide")
+const basket = document.querySelector(".basket");
+const deleteCart = document.getElementById("delete");
+const vanishItem = document.querySelector(".item")
+
+deleteCart.addEventListener(("click"), () => {
+    if(vanishItem.style.display === "none") {
+        vanishItem.style.display = "flex";
     } else {
-        cover.style.display = "none";
+        vanishItem.style.display = "none";
     }
 });
 
-// https://www.namecheap.com/logo-maker/app/share?c=font&l=6cc0a620-0e0a-11ed-a8e8-2301b6b34a9b
+// Quantity + & - 
+let plus = document.getElementById("plus");
+let minus = document.getElementById("minus");
+const quantity = document.getElementById("quantity");
+let count = 0;
+
+function plusUp() {
+    count++
+    quantity.innerHTML = count
+    console.log(count)
+}
+
+plus.addEventListener("click", plusUp)
+
+function minusDown() {
+    if(count === 0) {
+        quantity.innerHTML = 0
+    }else {
+        count--
+        quantity.innerHTML = count
+        console.log(count)
+    }
+}
+
+minus.addEventListener("click", minusDown);
+
+
